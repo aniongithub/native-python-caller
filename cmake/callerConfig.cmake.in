@@ -1,0 +1,10 @@
+get_filename_component(CALLER_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include(CMakeFindDependencyMacro)
+
+list(APPEND CMAKE_MODULE_PATH ${CALLER_CMAKE_DIR})
+
+if(NOT TARGET caller::caller)
+    include("${CALLER_CMAKE_DIR}/callerTargets.cmake")
+endif()
+
+set(CALLER_LIBRARIES caller::caller)
